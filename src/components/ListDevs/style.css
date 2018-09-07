@@ -1,0 +1,42 @@
+
+.repos-item--devs {
+  padding: 0;
+  margin-bottom: 15px;
+}
+.repos-item--devs > a {
+  overflow: auto;
+  padding: 15px;
+}
+.repos-item--devs img {
+  float: left;
+  margin-right: 15px;
+  max-width: 100px;
+  border-radius: 4px;
+}
+.repos-item--devs p {
+  float: left;
+  width: calc(100% - 130px);
+  text-align: left;
+  color: var(--color-dark-secondary);
+  margin: 0;
+  padding: 0;
+}
+.repos-item--devs p:first-of-type {
+  margin-bottom: 5px;
+  padding: 0 0 5px;
+  border-bottom: 1px solid var(--color-grey-tertiary);
+  font-weight: bold;
+}
+.repos-item--devs p:last-of-type {
+  font-size: 14px;
+}
+.repos-item--devs p:after {
+  background: transparent;
+}
+.repos-item--devs p > span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #222;
+}

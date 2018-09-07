@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 
 import Header from './Header';
+import ListRepos from './ListRepos'
+import ListDevs from './ListDevs'
 
 class App extends Component {
   state = {
@@ -26,13 +28,11 @@ class App extends Component {
         <SwipeableViews
           index={tabIndex}
           onChangeIndex={this.changeSwipe}
+          animateHeight={true}
+          style={{ minHeight: '100%' }}
         >
-          <div>
-            Repos
-          </div>
-          <div>
-            Devs
-          </div>
+          <ListRepos />
+          <ListDevs tabIndex={tabIndex}/>
         </SwipeableViews>
 
       </Fragment>

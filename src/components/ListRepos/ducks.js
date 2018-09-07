@@ -7,17 +7,16 @@ const URL = 'http://localhost:8000/';
 
 // THUNKS
 export function fetchRepos() { 
-  return function(dispatch) {
+  return async function(dispatch) {
     dispatch(fetchReposStart());
 
-    return fetch(URL)
-      .then(
-        res => res.json(),
-        err => fetchReposError(err)
-      )
-      .then((json) => {
-        dispatch(fetchReposFinish(json));
-      })
+    try {
+      const response = await fetch(URL)
+      const json = await response.json()
+      return dispatch(fetchReposFinish(json))
+    } catch (error) {
+      return dispatch(fetchReposError(error))
+    }
   }
 }
 
@@ -37,22 +36,26 @@ const initialState = {
   repos: [],
   isLoading: false,
   isError: false,
-  errorMsg: 'An error occurred',
+  errorMsg: '',
 }
 
 // REDUCERS
 export default function listReposReducer(state = initialState, action) {
+  // console.log(action.type)
+
   switch(action.type) {
     case FETCH_REPOS_START:
       return {
         ...state,
         isLoading: true,
+        isError: false,
       }
 
     case FETCH_REPOS_FINISH:
       return {
         ...state,
         isLoading: false,
+        isError: false,
         repos: action.payload,
       }
 
