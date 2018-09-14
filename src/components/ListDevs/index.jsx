@@ -12,29 +12,35 @@ class ListDevs extends React.Component {
   }
 
   render() {
-    return (
-      <ul className="repos-wrapper">
-        {
-          this.props.devs.map((dev, index) => (
-            <li className="repos-item repos-item--devs" key={index}>
-              <a href={URL + dev.link}>
-                <img src={dev.avatar} alt={dev.title} />
-                <p>
-                  <span>{dev.title}</span>
-                  {dev.snipitName}
-                </p>
-                <p>{dev.snipitDesc}</p>
-                </a>
-            </li>
-          ))
-        }
-      </ul>
-    )
+    const { devs, isError, errorMsg } = this.props.listDevs;
+
+    return isError
+      ? (
+        <p className="error-message">{ errorMsg }</p>
+      )
+      : (
+        <ul className="repos-wrapper">
+          {
+            devs.map((dev, index) => (
+              <li className="repos-item repos-item--devs" key={index}>
+                <a href={URL + dev.link}>
+                  <img src={dev.avatar} alt={dev.title} />
+                  <p>
+                    <span>{dev.title}</span>
+                    {dev.snipitName}
+                  </p>
+                  <p>{dev.snipitDesc}</p>
+                  </a>
+              </li>
+            ))
+          }
+        </ul>
+      )
   }
 }
 
 const mapState = ({ listDevs }) => ({
-  devs: listDevs.devs
+  listDevs
 })
 
 export default connect(mapState, { fetchDevs })(ListDevs);

@@ -2,11 +2,12 @@ import { createStore, applyMiddleware } from 'redux';
 import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
-import listReposReducer from './components/ListRepos/ducks';
+import listReposReducer, { readmeReducer } from './components/ListRepos/ducks';
 import listDevsReducer from './components/ListDevs/ducks';
 
 const reducers = combineReducers({
   listRepos: listReposReducer,
+  readme: readmeReducer,
   listDevs: listDevsReducer
 })
 

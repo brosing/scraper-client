@@ -160,10 +160,6 @@ body {
   height: 100%;
 }
 
-.react-swipeable-view-container {
-  height: 100% !important;
-}
-
 /* #root {
   background-image: linear-gradient(0deg, #fff 50%, #888 70%, #333 90%);
 } */
@@ -187,4 +183,12 @@ body {
 }
 .header-button.active {
   border-bottom-color: #fff;
+}
+
+/* ERROR MESSAGES */
+.error-message {
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  padding: 20px 0;
 }

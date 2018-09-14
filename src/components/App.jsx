@@ -4,6 +4,7 @@ import SwipeableViews from 'react-swipeable-views';
 import Header from './Header';
 import ListRepos from './ListRepos'
 import ListDevs from './ListDevs'
+import { connect } from 'react-redux';
 
 class App extends Component {
   state = {
@@ -15,6 +16,7 @@ class App extends Component {
   }
 
   render() {
+    const reposLength = this.props.repos.length;
     const { tabIndex } = this.state;
 
     return (
@@ -22,14 +24,13 @@ class App extends Component {
 
         <Header
           tabIndex={tabIndex}
-          onChangeIndex={this.changeSwipe}
+          onChangeIndex={this.changeSwipe} 
         />
 
         <SwipeableViews
           index={tabIndex}
           onChangeIndex={this.changeSwipe}
-          animateHeight={true}
-          style={{ minHeight: '100%' }}
+          animateHeight={reposLength !== 0}
         >
           <ListRepos />
           <ListDevs tabIndex={tabIndex}/>
@@ -40,4 +41,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapState = ({ listRepos }) => ({
+  repos: listRepos.repos
+})
+
+export default connect(mapState)(App);

@@ -3,7 +3,7 @@ const FETCH_DEVS_START = 'FETCH_DEVS_START';
 const FETCH_DEVS_FINISH = 'FETCH_DEVS_FINISH';
 const FETCH_DEVS_ERROR = 'FETCH_DEVS_ERROR';
 
-const URL = 'http://localhost:8000/devs';
+const URL = 'https://githubtrends-scrapper.herokuapp.com/devs';
 
 // THUNKS
 export function fetchDevs() { 
