@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import './style.css';
 import { fetchDevs } from './ducks';
+import LoadAndError from '../LoadAndError';
 
 const URL = 'https://github.com';
 
@@ -12,13 +13,11 @@ class ListDevs extends React.Component {
   }
 
   render() {
-    const { devs, isError, errorMsg } = this.props.listDevs;
+    const { listDevs } = this.props;
+    const { devs } = listDevs;
 
-    return isError
-      ? (
-        <p className="error-message">{ errorMsg }</p>
-      )
-      : (
+    return (
+      <LoadAndError {...listDevs} >
         <ul className="repos-wrapper">
           {
             devs.map((dev, index) => (
@@ -35,7 +34,8 @@ class ListDevs extends React.Component {
             ))
           }
         </ul>
-      )
+      </LoadAndError>
+    )
   }
 }
 

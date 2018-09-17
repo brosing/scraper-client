@@ -185,10 +185,15 @@ body {
   border-bottom-color: #fff;
 }
 
-/* ERROR MESSAGES */
-.error-message {
-  color: red;
+/* LOAD & ERROR MESSAGES */
+.error-message,
+.load-message {
   font-size: 16px;
+  font-weight: 600;
   text-align: center;
   padding: 20px 0;
+}
+
+.error-message {
+  color: red;
 }
