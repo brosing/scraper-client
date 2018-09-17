@@ -15,19 +15,19 @@ const h1Style = {
   color: '#fff',
 }
 
-const threeDotStyle = {
-  position: 'absolute',
-  right: '0',
-  top: '0',
-  width: '50px',
-  height: '50px',
-  padding: '0',
-  textAlign: 'center',
-  fontSize: '21px',
-  background: 'transparent',
-  border: '0',
-  color: '#fff',
-}
+// const threeDotStyle = {
+//   position: 'absolute',
+//   right: '0',
+//   top: '0',
+//   width: '50px',
+//   height: '50px',
+//   padding: '0',
+//   textAlign: 'center',
+//   fontSize: '21px',
+//   background: 'transparent',
+//   border: '0',
+//   color: '#fff',
+// }
 
 const Header = ({ tabIndex, onChangeIndex }) => (
   <Fragment>
@@ -35,7 +35,7 @@ const Header = ({ tabIndex, onChangeIndex }) => (
       <h1 style={h1Style}>
         Github Trending
       </h1>
-      <button style={threeDotStyle}>&#8230;</button>
+      {/* <button style={threeDotStyle}>&#8230;</button> */}
     </header>
 
     <div className="header-button-wrapper clearfix">

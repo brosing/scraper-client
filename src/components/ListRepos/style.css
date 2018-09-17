@@ -6,6 +6,10 @@
   padding: 20px;
   list-style: none;
 }
+.repos-wrapper ul {
+  margin: 0;
+  padding: 0;
+}
 
 
 .repos-item {
@@ -14,13 +18,13 @@
   text-indent: 0;
   text-align: center;
   background-color: #fff;
-  border-radius: 4px;
+  border-radius: 5px;
   box-shadow: 0 1px 1px 0 rgba(60,64,67,.08),
     0 1px 3px 1px rgba(60,64,67,.16);
 }
 .repos-item > a {
   display: block;
-  padding: 15px 25px 30px;
+  padding: 10px 15px 15px;
   text-decoration: none;
   color: var(--color-dark-primary);
 }

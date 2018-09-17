@@ -6,6 +6,7 @@ class LoadAndError extends React.Component {
   }
 
   componentDidMount() {
+    // init interval 
     this.interval = setInterval(this.timer, 1000);
   }
 

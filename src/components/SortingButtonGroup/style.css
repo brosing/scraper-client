@@ -1,0 +1,35 @@
+.sorting-button-group {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.sorting-button {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.sorting-button input {
+  display: none;
+}
+.sorting-button input:checked + label {
+  font-weight: bold;
+  color: #fff;
+  padding-left  : 15px;
+  position: relative;
+  background: #333;
+  box-shadow: 0 1px 1px 0 rgba(60,64,67,.08), 0 1px 3px 1px rgba(60,64,67,.16);
+}
+.sorting-button input:checked + label:before {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  content: '✓';
+}
+.sorting-button label {
+  display: block;
+  font-size: 13px;
+  color: #666;
+  padding: 5px;
+  border-radius: 15px;
+}
