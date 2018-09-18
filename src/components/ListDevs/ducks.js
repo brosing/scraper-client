@@ -6,9 +6,9 @@ const FETCH_DEVS_ERROR = 'FETCH_DEVS_ERROR';
 const URL = 'https://githubtrends-scrapper.herokuapp.com/devs';
 
 // THUNKS
-export function fetchDevs(sorter) { 
+export function fetchDevs(sorter = 'today') { 
   return async function(dispatch) {
-    dispatch(fetchDevsStart());
+    dispatch(fetchDevsStart(sorter));
     
     try {
       const response = await fetch(`${URL}?since=${sorter}`)
@@ -21,8 +21,8 @@ export function fetchDevs(sorter) {
 }
 
 // ACTIONS
-function fetchDevsStart() {
-  return { type: FETCH_DEVS_START }
+function fetchDevsStart(sorter) {
+  return { type: FETCH_DEVS_START, payload: sorter }
 }
 function fetchDevsFinish(json) {
   return { type: FETCH_DEVS_FINISH, payload: json }
@@ -34,6 +34,7 @@ function fetchDevsError(err) {
 // INITIAL STATE
 const initialState = {
   devs: [],
+  sortBy: 'today',
   isLoading: false,
   isError: false,
   errorMsg: '',
@@ -49,6 +50,7 @@ export default function listDevsReducer(state = initialState, action) {
         ...state,
         isLoading: true,
         isError: false,
+        sortBy: action.payload,
       }
 
     case FETCH_DEVS_FINISH:

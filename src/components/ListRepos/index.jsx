@@ -2,31 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import './style.css';
-// import { fetchRepos, fetchReadme } from './ducks';
 import { fetchRepos } from './ducks';
 import LoadAndError from '../LoadAndError';
 import SortingButtonGroup from '../SortingButtonGroup';
-// import Modal from './Modal'
 
 const URL = 'https://github.com';
 
 class ListRepos extends React.Component {
   state ={
-    modalIsOpen: false
+    modalIsOpen: false,
   }
 
   componentDidMount() {
     this.props.fetchRepos();
   }
-
-  // openModal = (link) => {
-  //   this.setState({ modalIsOpen: true });
-  //   this.props.fetchReadme(link);
-  // }
-
-  // closeModal = () => {
-  //   this.setState({ modalIsOpen: false });
-  // }
 
   render() {
     const { listRepos } = this.props;
@@ -59,40 +48,17 @@ class ListRepos extends React.Component {
                         <span>{repo.forks} forks</span>
                       </div>
                     </a>
-
-                    {/* <button
-                      className="repos-item__button"
-                      onClick={() => this.openModal(repo.link)}
-                    >
-                      Peek README.md
-                    </button> */}
                   </li>
                 )
               })
             }
           </ul>
-
-          {/* <Modal
-            readme={this.props.readme}
-            modalIsOpen={this.state.modalIsOpen}
-            closeModal={this.closeModal}
-          /> */}
         </LoadAndError>
       </div>
     )
   }
 }
 
-// const mapState = ({ listRepos, readme }) => ({
-//   listRepos,
-//   readme
-// })
+const mapState = ({ listRepos }) => ({ listRepos })
 
-const mapState = ({ listRepos }) => ({
-  listRepos
-})
-
-export default connect(mapState, {
-  // fetchRepos, fetchReadme
-  fetchRepos
-})(ListRepos);
+export default connect(mapState, { fetchRepos })(ListRepos);
