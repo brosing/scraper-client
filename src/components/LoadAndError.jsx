@@ -1,42 +1,12 @@
 import React from 'react';
 
-class LoadAndError extends React.Component {
-  state = {
-    loading: 'Loading'
-  }
-
-  componentDidMount() {
-    // init interval 
-    this.interval = setInterval(this.timer, 1000);
-  }
-
-  componentDidUpdate() {
-    if (!this.props.isLoading) {
-      clearInterval(this.interval)
-    }
-  }
-
-  timer = () => {
-    const slicing = this.state.loading.slice(-4);
-    const dots = '....';
-
-    if (slicing === dots) {
-      this.setState({
-        loading: 'loading'
-      })
-    } else {
-      this.setState((state) => ({
-        loading: state.loading += '.'
-      }))
-    }
-  }
-  
+class LoadAndError extends React.PureComponent {
   render() {
     const { isLoading, isError, errorMsg, children } = this.props;
 
     if (isLoading) {
       return (
-        <p className="load-message">{this.state.loading}</p>
+        <p className="load-message">Loading</p>
       )
     }
   

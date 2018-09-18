@@ -10,12 +10,12 @@ const URL = 'https://githubtrends-scrapper.herokuapp.com/';
 // const RAW_URL = 'https://api.github.com/repos';
 
 // THUNKS
-export function fetchRepos() { 
+export function fetchRepos(sorter) { 
   return async function(dispatch) {
     dispatch(fetchReposStart());
 
     try {
-      const response = await fetch(URL)
+      const response = await fetch(`${URL}?since=${sorter}`)
       const json = await response.json()
       return dispatch(fetchReposFinish(json))
     } catch (error) {

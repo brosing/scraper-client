@@ -6,12 +6,12 @@ const FETCH_DEVS_ERROR = 'FETCH_DEVS_ERROR';
 const URL = 'https://githubtrends-scrapper.herokuapp.com/devs';
 
 // THUNKS
-export function fetchDevs() { 
+export function fetchDevs(sorter) { 
   return async function(dispatch) {
     dispatch(fetchDevsStart());
     
     try {
-      const response = await fetch(URL)
+      const response = await fetch(`${URL}?since=${sorter}`)
       const json = await response.json()
       return dispatch(fetchDevsFinish(json))
     } catch (error) {
