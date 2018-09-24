@@ -8,7 +8,7 @@ import SortingButtonGroup from '../SortingButtonGroup';
 
 const URL = 'https://github.com';
 
-class ListDevs extends React.Component {
+class ListDevs extends React.PureComponent {
   componentDidMount() {
     this.props.fetchDevs();
   }
@@ -33,14 +33,14 @@ class ListDevs extends React.Component {
                       {dev.itemName}
                     </p>
                     <p>{dev.itemDesc}</p>
-                    </a>
+                  </a>
                 </li>
               ))
             }
           </ul>
         </LoadAndError>
       </div>
-    )
+    );
   }
 }
 

@@ -8,11 +8,7 @@ import SortingButtonGroup from '../SortingButtonGroup';
 
 const URL = 'https://github.com';
 
-class ListRepos extends React.Component {
-  state ={
-    modalIsOpen: false,
-  }
-
+class ListRepos extends React.PureComponent {
   componentDidMount() {
     this.props.fetchRepos();
   }
@@ -30,7 +26,7 @@ class ListRepos extends React.Component {
             {
               repos.map((repo, index) => {
                 const splittedTitle = repo.title.split('/');
-                const title = splittedTitle.map(title => title.trim());
+                const title = splittedTitle.map(rawTitle => rawTitle.trim());
 
                 return (
                   <li key={index.toString()} className="repos-item">
@@ -55,7 +51,7 @@ class ListRepos extends React.Component {
           </ul>
         </LoadAndError>
       </div>
-    )
+    );
   }
 }
 
