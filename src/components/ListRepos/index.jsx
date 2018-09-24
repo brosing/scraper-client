@@ -19,7 +19,7 @@ class ListRepos extends React.Component {
 
   render() {
     const { listRepos } = this.props;
-    const { repos} = listRepos;
+    const { repos } = listRepos;
 
     return (
       <div className="repos-wrapper">
@@ -33,7 +33,7 @@ class ListRepos extends React.Component {
                 const title = splittedTitle.map(title => title.trim());
 
                 return (
-                  <li key={index} className="repos-item">
+                  <li key={index.toString()} className="repos-item">
                     <a href={URL + repo.link}>
                       <h3>
                         {title[0]} / <strong>{title[1]}</strong>

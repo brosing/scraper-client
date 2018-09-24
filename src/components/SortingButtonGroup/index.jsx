@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { fetchRepos } from '../ListRepos/ducks';
 import { fetchDevs } from '../ListDevs/ducks';
 
-import './style.css'
+import './style.css';
 
 class SortingButtonGroup extends React.PureComponent {
   state = {
-    sortBy: 'today'
+    sortBy: 'today',
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -29,8 +29,8 @@ class SortingButtonGroup extends React.PureComponent {
 
   handleChange = (e) => {
     this.setState({
-      sortBy: e.target.value
-    })
+      sortBy: e.target.value,
+    });
   }
 
   render() {
@@ -78,7 +78,7 @@ class SortingButtonGroup extends React.PureComponent {
           </label>
         </div>
       </div>
-    )
+    );
   }
 }
 

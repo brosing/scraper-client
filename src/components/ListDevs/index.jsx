@@ -10,7 +10,7 @@ const URL = 'https://github.com';
 
 class ListDevs extends React.Component {
   componentDidMount() {
-    this.props.fetchDevs()    
+    this.props.fetchDevs();
   }
 
   render() {
@@ -19,13 +19,13 @@ class ListDevs extends React.Component {
 
     return (
       <div className="repos-wrapper">
-        <SortingButtonGroup name="sortDevs"/>
+        <SortingButtonGroup name="sortDevs" />
 
-        <LoadAndError {...listDevs} >
+        <LoadAndError {...listDevs}>
           <ul>
             {
               devs.map((dev, index) => (
-                <li className="repos-item repos-item--devs" key={index}>
+                <li className="repos-item repos-item--devs" key={index.toString()}>
                   <a href={URL + dev.link}>
                     <img src={dev.avatar} alt={dev.title} />
                     <p>
@@ -45,7 +45,7 @@ class ListDevs extends React.Component {
 }
 
 const mapState = ({ listDevs }) => ({
-  listDevs
-})
+  listDevs,
+});
 
 export default connect(mapState, { fetchDevs })(ListDevs);
