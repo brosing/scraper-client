@@ -1,9 +1,11 @@
+import { SERVER_URL } from '../../config';
+
+const DEVS_URL = SERVER_URL + 'devs';
+
 // CONSTANT
 const FETCH_DEVS_START = 'FETCH_DEVS_START';
 const FETCH_DEVS_FINISH = 'FETCH_DEVS_FINISH';
 const FETCH_DEVS_ERROR = 'FETCH_DEVS_ERROR';
-
-const URL = 'https://githubtrends-scrapper.herokuapp.com/devs';
 
 // THUNKS
 export function fetchDevs(sorter = 'today') { 
@@ -11,7 +13,7 @@ export function fetchDevs(sorter = 'today') {
     dispatch(fetchDevsStart(sorter));
     
     try {
-      const response = await fetch(`${URL}?since=${sorter}`)
+      const response = await fetch(`${DEVS_URL}?since=${sorter}`)
       const json = await response.json()
       return dispatch(fetchDevsFinish(json))
     } catch (error) {

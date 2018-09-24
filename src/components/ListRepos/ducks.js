@@ -1,9 +1,9 @@
+import { SERVER_URL } from '../../config';
+
 // CONSTANT
 const FETCH_REPOS_START = 'FETCH_REPOS_START';
 const FETCH_REPOS_FINISH = 'FETCH_REPOS_FINISH';
 const FETCH_REPOS_ERROR = 'FETCH_REPOS_ERROR';
-
-const URL = 'https://githubtrends-scrapper.herokuapp.com/';
 
 // THUNKS
 export function fetchRepos(sorter = 'today') { 
@@ -11,7 +11,7 @@ export function fetchRepos(sorter = 'today') {
     dispatch(fetchReposStart(sorter));
 
     try {
-      const response = await fetch(`${URL}?since=${sorter}`)
+      const response = await fetch(`${SERVER_URL}?since=${sorter}`)
       const json = await response.json()
       return dispatch(fetchReposFinish(json))
     } catch (error) {

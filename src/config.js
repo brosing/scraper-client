@@ -1,1 +1,1 @@
-export const SERVER = 'https://githubtrends-scrapper.herokuapp.com/';
+export const SERVER_URL = 'https://githubtrends-scraper.herokuapp.com/';
