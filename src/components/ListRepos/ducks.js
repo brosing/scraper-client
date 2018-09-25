@@ -1,56 +1,44 @@
+import { call, put, takeLatest } from 'redux-saga/effects';
+
+import reducerFetch from '../../helpers/reducerFetch';
+import { SERVER_URL } from '../../config';
+
+
 // CONSTANT
-export const FETCH_REPOS_START = 'FETCH_REPOS_START';
-const FETCH_REPOS_FINISH = 'FETCH_REPOS_FINISH';
-const FETCH_REPOS_ERROR = 'FETCH_REPOS_ERROR';
+const REPOS_FETCH_START = 'REPOS_FETCH_START';
+const REPOS_FETCH_FINISH = 'REPOS_FETCH_FINISH';
+const REPOS_FETCH_ERROR = 'REPOS_FETCH_ERROR';
 
 
 // ACTIONS
 export function fetchRepos(sorter) {
-  return { type: FETCH_REPOS_START, payload: sorter };
+  return { type: REPOS_FETCH_START, payload: sorter };
 }
 export function fetchReposFinish(json) {
-  return { type: FETCH_REPOS_FINISH, payload: json };
+  return { type: REPOS_FETCH_FINISH, payload: json };
 }
 export function fetchReposError(err) {
-  return { type: FETCH_REPOS_ERROR, payload: err };
+  return { type: REPOS_FETCH_ERROR, payload: err };
 }
 
 
-// INITIAL STATE
-const initialState = {
-  repos: [],
-  sortBy: 'today',
-  isLoading: false,
-  isError: false,
-  errorMsg: '',
-};
-
-
-// REDUCERS
-export default function listReposReducer(state = initialState, action) {
-  switch (action.type) {
-    case FETCH_REPOS_START:
-      return {
-        ...state,
-        isLoading: true,
-        isError: false,
-        sortBy: action.payload ? action.payload : state.sortBy,
-      };
-    case FETCH_REPOS_FINISH:
-      return {
-        ...state,
-        isLoading: false,
-        isError: false,
-        repos: action.payload,
-      };
-    case FETCH_REPOS_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        isError: true,
-        errorMsg: `An error occurred: ${action.payload}`,
-      };
-    default:
-      return state;
+// SAGA
+function* fetchDevsWorker(action) {
+  try {
+    const repos = yield call(
+      url => fetch(url).then(res => res.json()),
+      `${SERVER_URL}?since=${action.payload}`,
+    );
+    yield put(fetchReposFinish(repos));
+  } catch (err) {
+    yield put(fetchReposError(err));
   }
 }
+
+export function* fetchReposWatcher() {
+  yield takeLatest(REPOS_FETCH_START, fetchDevsWorker);
+}
+
+
+// REDUCER
+export default reducerFetch('repos');
