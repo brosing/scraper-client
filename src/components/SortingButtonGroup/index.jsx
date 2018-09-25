@@ -65,18 +65,22 @@ class SortingButtonGroup extends React.PureComponent {
           </label>
         </div>
 
-        <div className="sorting-button">
-          <input
-            type="radio"
-            name={name}
-            onChange={this.handleChange}
-            id={`${name}Monthly`}
-            value="monthly"
-          />
-          <label htmlFor={`${name}Monthly`}>
-            This Month
-          </label>
-        </div>
+        {
+          name === 'sortRepos' && (
+            <div className="sorting-button">
+              <input
+                type="radio"
+                name={name}
+                onChange={this.handleChange}
+                id={`${name}Monthly`}
+                value="monthly"
+              />
+              <label htmlFor={`${name}Monthly`}>
+                This Month
+              </label>
+            </div>
+          )
+        }
       </div>
     );
   }

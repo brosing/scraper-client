@@ -1,37 +1,18 @@
-import { SERVER_URL } from '../../config';
-
-const DEVS_URL = `${SERVER_URL}devs`;
-
 // CONSTANT
-const FETCH_DEVS_START = 'FETCH_DEVS_START';
+export const FETCH_DEVS_START = 'FETCH_DEVS_START';
 const FETCH_DEVS_FINISH = 'FETCH_DEVS_FINISH';
 const FETCH_DEVS_ERROR = 'FETCH_DEVS_ERROR';
 
 
 // ACTIONS
-function fetchDevsStart(sorter) {
+export function fetchDevs(sorter) {
   return { type: FETCH_DEVS_START, payload: sorter };
 }
-function fetchDevsFinish(json) {
+export function fetchDevsFinish(json) {
   return { type: FETCH_DEVS_FINISH, payload: json };
 }
-function fetchDevsError(err) {
+export function fetchDevsError(err) {
   return { type: FETCH_DEVS_ERROR, payload: err };
-}
-
-// THUNKS
-export function fetchDevs(sorter = 'today') {
-  return async function (dispatch) {
-    dispatch(fetchDevsStart(sorter));
-
-    try {
-      const response = await fetch(`${DEVS_URL}?since=${sorter}`);
-      const json = await response.json();
-      return dispatch(fetchDevsFinish(json));
-    } catch (error) {
-      return dispatch(fetchDevsError(error));
-    }
-  };
 }
 
 
@@ -44,6 +25,7 @@ const initialState = {
   errorMsg: '',
 };
 
+
 // REDUCERS
 export default function listDevsReducer(state = initialState, action) {
   // console.log(action.type)
@@ -54,7 +36,7 @@ export default function listDevsReducer(state = initialState, action) {
         ...state,
         isLoading: true,
         isError: false,
-        sortBy: action.payload,
+        sortBy: action.payload ? action.payload : state.sortBy,
       };
 
     case FETCH_DEVS_FINISH:

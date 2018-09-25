@@ -1,35 +1,18 @@
-import { SERVER_URL } from '../../config';
-
 // CONSTANT
-const FETCH_REPOS_START = 'FETCH_REPOS_START';
+export const FETCH_REPOS_START = 'FETCH_REPOS_START';
 const FETCH_REPOS_FINISH = 'FETCH_REPOS_FINISH';
 const FETCH_REPOS_ERROR = 'FETCH_REPOS_ERROR';
 
 
 // ACTIONS
-function fetchReposStart(sorter) {
+export function fetchRepos(sorter) {
   return { type: FETCH_REPOS_START, payload: sorter };
 }
-function fetchReposFinish(json) {
+export function fetchReposFinish(json) {
   return { type: FETCH_REPOS_FINISH, payload: json };
 }
-function fetchReposError(err) {
+export function fetchReposError(err) {
   return { type: FETCH_REPOS_ERROR, payload: err };
-}
-
-// THUNKS
-export function fetchRepos(sorter = 'today') {
-  return async function (dispatch) {
-    dispatch(fetchReposStart(sorter));
-
-    try {
-      const response = await fetch(`${SERVER_URL}?since=${sorter}`);
-      const json = await response.json();
-      return dispatch(fetchReposFinish(json));
-    } catch (error) {
-      return dispatch(fetchReposError(error));
-    }
-  };
 }
 
 
@@ -42,6 +25,7 @@ const initialState = {
   errorMsg: '',
 };
 
+
 // REDUCERS
 export default function listReposReducer(state = initialState, action) {
   switch (action.type) {
@@ -50,7 +34,7 @@ export default function listReposReducer(state = initialState, action) {
         ...state,
         isLoading: true,
         isError: false,
-        sortBy: action.payload,
+        sortBy: action.payload ? action.payload : state.sortBy,
       };
     case FETCH_REPOS_FINISH:
       return {
