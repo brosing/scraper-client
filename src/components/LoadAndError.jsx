@@ -8,13 +8,19 @@ class LoadAndError extends React.PureComponent {
 
     if (isLoading) {
       return (
-        <p className="load-message">Loading</p>
+        <div className="loader">
+          <div className="inner one" />
+          <div className="inner two" />
+          <div className="inner three" />
+        </div>
       );
     }
 
     if (isError) {
       return (
-        <p className="error-message">{ errorMsg }</p>
+        <p className="error-message">
+          { errorMsg }
+        </p>
       );
     }
 

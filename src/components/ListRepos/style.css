@@ -1,7 +1,9 @@
 /* REPOSITORIES */
 
 .repos-wrapper {
+  position: relative;
   height: inherit;
+  min-height: 70vh;
   margin: 0;
   padding: 20px;
   list-style: none;

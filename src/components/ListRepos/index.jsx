@@ -19,7 +19,7 @@ class ListRepos extends React.PureComponent {
 
     return (
       <div className="repos-wrapper">
-        <SortingButtonGroup name="sortRepos"/>
+        <SortingButtonGroup name="sortRepos" />
 
         <LoadAndError {...listRepos}>
           <ul>
@@ -45,7 +45,7 @@ class ListRepos extends React.PureComponent {
                       </div>
                     </a>
                   </li>
-                )
+                );
               })
             }
           </ul>
