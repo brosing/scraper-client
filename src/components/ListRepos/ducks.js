@@ -23,7 +23,7 @@ export function fetchReposError(err) {
 
 
 // SAGA
-function* fetchDevsWorker(action) {
+function* fetchReposWorker(action) {
   try {
     const repos = yield call(
       url => fetch(url).then(res => res.json()),
@@ -36,7 +36,7 @@ function* fetchDevsWorker(action) {
 }
 
 export function* fetchReposWatcher() {
-  yield takeLatest(REPOS_FETCH_START, fetchDevsWorker);
+  yield takeLatest(REPOS_FETCH_START, fetchReposWorker);
 }
 
 
