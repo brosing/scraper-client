@@ -14,7 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     ReactGA.initialize('UA-129601106-1', { debug: true });
-    ReactGA.pageview(window.location.hash);
+    ReactGA.pageview(window.location.pathname);
   }
 
   changeSwipe = (index) => {
