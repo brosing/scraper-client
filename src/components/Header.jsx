@@ -34,7 +34,14 @@ const Header = ({ tabIndex, onChangeIndex }) => {
         <button
           type="button"
           className={`header-button ${tabIndex === 0 ? 'active' : ''}`}
-          onClick={() => onChangeIndex(0)}
+          onClick={() => {
+            console.log('click')
+            onChangeIndex(0)
+            ReactGA.event({
+              category: 'User',
+              action: 'Click Button'
+            })
+          }}
         >
           Repositories
         </button>
