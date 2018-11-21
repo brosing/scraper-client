@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { connect } from 'react-redux';
+import ReactGA from 'react-ga';
 
 import Header from './Header';
 import ListRepos from './ListRepos';
@@ -9,6 +10,11 @@ import ListDevs from './ListDevs';
 class App extends Component {
   state = {
     tabIndex: 0,
+  }
+
+  componentDidMount() {
+    ReactGA.initialize('UA-129601106-1', { debug: true });
+    ReactGA.pageview(window.location.hash);
   }
 
   changeSwipe = (index) => {
