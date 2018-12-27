@@ -1,6 +1,5 @@
 // HELPER REDUCER
 export default function reducerFetch(reducerName) {
-
   // INIT STATE
   const initialState = {
     sortBy: 'today',
@@ -15,7 +14,7 @@ export default function reducerFetch(reducerName) {
     const { type, payload } = action;
 
     switch (type) {
-      case `${CASE_NAME}_FETCH_START`:
+      case `FETCH_${CASE_NAME}_START`:
         return {
           ...state,
           isLoading: true,
@@ -23,7 +22,7 @@ export default function reducerFetch(reducerName) {
           sortBy: payload || state.sortBy,
         };
 
-      case `${CASE_NAME}_FETCH_FINISH`:
+      case `FETCH_${CASE_NAME}_FINISH`:
         return {
           ...state,
           isLoading: false,
@@ -31,7 +30,7 @@ export default function reducerFetch(reducerName) {
           [reducerName]: payload,
         };
 
-      case `${CASE_NAME}_FETCH_ERROR`:
+      case `FETCH_${CASE_NAME}_ERROR`:
         return {
           ...state,
           isLoading: false,

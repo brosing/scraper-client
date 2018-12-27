@@ -5,20 +5,20 @@ import { SERVER_URL } from '../../config';
 
 
 // CONSTANT
-const REPOS_FETCH_START = 'REPOS_FETCH_START';
-const REPOS_FETCH_FINISH = 'REPOS_FETCH_FINISH';
-const REPOS_FETCH_ERROR = 'REPOS_FETCH_ERROR';
+const FETCH_REPOS_START = 'FETCH_REPOS_START';
+const FETCH_REPOS_FINISH = 'FETCH_REPOS_FINISH';
+const FETCH_REPOS_ERROR = 'FETCH_REPOS_ERROR';
 
 
 // ACTIONS
 export function fetchRepos(sorter) {
-  return { type: REPOS_FETCH_START, payload: sorter };
+  return { type: FETCH_REPOS_START, payload: sorter };
 }
 export function fetchReposFinish(json) {
-  return { type: REPOS_FETCH_FINISH, payload: json };
+  return { type: FETCH_REPOS_FINISH, payload: json };
 }
 export function fetchReposError(err) {
-  return { type: REPOS_FETCH_ERROR, payload: err };
+  return { type: FETCH_REPOS_ERROR, payload: err };
 }
 
 
@@ -36,7 +36,7 @@ function* fetchReposWorker(action) {
 }
 
 export function* fetchReposWatcher() {
-  yield takeLatest(REPOS_FETCH_START, fetchReposWorker);
+  yield takeLatest(FETCH_REPOS_START, fetchReposWorker);
 }
 
 

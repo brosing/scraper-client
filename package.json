@@ -3,19 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "marked": "^0.4.0",
+    "marked": "^0.5.2",
     "prop-types": "^15.6.2",
-    "ramda": "^0.25.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-ga": "^2.5.3",
-    "react-markdown": "^3.6.0",
-    "react-modal": "^3.5.1",
-    "react-redux": "^5.0.7",
-    "react-scripts": "1.1.4",
-    "react-swipeable-views": "^0.12.15",
-    "redux": "^4.0.0",
-    "redux-saga": "^0.16.0",
+    "ramda": "^0.26.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-ga": "^2.5.6",
+    "react-markdown": "^4.0.4",
+    "react-modal": "^3.8.1",
+    "react-redux": "^6.0.0",
+    "react-scripts": "2.1.2",
+    "react-swipeable-views": "^0.13.0",
+    "redux": "^4.0.1",
+    "redux-saga": "^0.16.2",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -26,13 +26,18 @@
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^5.6.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
-    "jest-enzyme": "^6.0.2"
-  }
+    "jest-enzyme": "^7.0.1"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

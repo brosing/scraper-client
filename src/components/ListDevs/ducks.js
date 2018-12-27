@@ -5,20 +5,20 @@ import { SERVER_URL } from '../../config';
 
 // CONSTANTS
 const DEVS_URL = `${SERVER_URL}devs`;
-const DEVS_FETCH_START = 'DEVS_FETCH_START';
-const DEVS_FETCH_FINISH = 'DEVS_FETCH_FINISH';
-const DEVS_FETCH_ERROR = 'DEVS_FETCH_ERROR';
+const FETCH_DEVS_START = 'FETCH_DEVS_START';
+const FETCH_DEVS_FINISH = 'FETCH_DEVS_FINISH';
+const FETCH_DEVS_ERROR = 'FETCH_DEVS_ERROR';
 
 
 // ACTIONS
 export function fetchDevs(sorter) {
-  return { type: DEVS_FETCH_START, payload: sorter };
+  return { type: FETCH_DEVS_START, payload: sorter };
 }
 export function fetchDevsFinish(json) {
-  return { type: DEVS_FETCH_FINISH, payload: json };
+  return { type: FETCH_DEVS_FINISH, payload: json };
 }
 export function fetchDevsError(err) {
-  return { type: DEVS_FETCH_ERROR, payload: err };
+  return { type: FETCH_DEVS_ERROR, payload: err };
 }
 
 
@@ -36,7 +36,7 @@ function* fetchDevsWorker(action) {
 }
 
 export function* fetchDevsWatcher() {
-  yield takeLatest(DEVS_FETCH_START, fetchDevsWorker);
+  yield takeLatest(FETCH_DEVS_START, fetchDevsWorker);
 }
 
 
