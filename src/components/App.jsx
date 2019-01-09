@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { connect } from 'react-redux';
-import ReactGA from 'react-ga';
 
 import Header from './Header';
 import ListRepos from './ListRepos';
 import ListDevs from './ListDevs';
+import { loadGTM, loadGA } from '../helpers/tracker';
 
 class App extends Component {
   state = {
@@ -13,8 +13,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    ReactGA.initialize('UA-129601106-1', { debug: true });
-    ReactGA.pageview(window.location.pathname);
+    loadGTM('GTM-57QG7WJ');
+    loadGA('UA-132049781-1');
   }
 
   changeSwipe = (index) => {
