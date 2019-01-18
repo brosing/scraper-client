@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Header from './Header';
 import ListRepos from './ListRepos';
 import ListDevs from './ListDevs';
-import { loadGTM, loadGA } from '../helpers/tracker';
+import { loadGTM } from '../helpers/tracker';
 
 class App extends Component {
   state = {
@@ -14,7 +14,6 @@ class App extends Component {
 
   componentDidMount() {
     loadGTM('GTM-57QG7WJ');
-    loadGA('UA-132049781-1');
   }
 
   changeSwipe = (index) => {
