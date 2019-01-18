@@ -19,6 +19,8 @@ class App extends Component {
 
   changeSwipe = (index) => {
     this.setState({ tabIndex: index });
+    const pageUrl = `?index=${index}`;
+    window.history.pushState('', '', pageUrl);
   }
 
   render() {
