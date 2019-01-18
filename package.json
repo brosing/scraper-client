@@ -8,6 +8,7 @@
     "ramda": "^0.26.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-gtm-module": "^2.0.2",
     "react-markdown": "^4.0.4",
     "react-modal": "^3.8.1",
     "react-redux": "^6.0.0",
